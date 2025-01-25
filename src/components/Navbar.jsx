@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styles } from "../styles";
 import { Link } from "react-router-dom";
-import { close, logo, menu } from "../assets";
+import { close, logo, menu, rusaith } from "../assets";
 import {
   navLinks,
   navigationPaths,
@@ -26,7 +26,11 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+          <div className="relative w-16 h-16 flex justify-center items-center rounded-full bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 animate-spin-slow">
+            <div className="bg-black w-14 h-14 flex justify-center items-center rounded-full">
+              <img src={rusaith} alt="logo" className="w-12 h-12 object-cover rounded-full" />
+            </div>
+          </div>
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
             {personalInfo.name} &nbsp;
             <span className="lg:block hidden">| {personalInfo.role}</span>
@@ -37,9 +41,8 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <li
               key={link.id}
-              className={`${
-                active === link.title ? "text-white" : "text-secondary"
-              } text-[18px] font-medium cursor-pointer hover:text-white`}
+              className={`${active === link.title ? "text-white" : "text-secondary"
+                } text-[18px] font-medium cursor-pointer hover:text-white`}
               onClick={() => setActive(link.title)}
             >
               <a href={`#${link.id}`}>{link.title}</a>
@@ -68,17 +71,15 @@ const Navbar = () => {
           />
 
           <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } absolute top-20 right-0 black-gradient mx-4 my-2 p-6 rounded-xl z-10 min-w-[140px]`}
+            className={`${!toggle ? "hidden" : "flex"
+              } absolute top-20 right-0 black-gradient mx-4 my-2 p-6 rounded-xl z-10 min-w-[140px]`}
           >
             <ul className="list-none flex flex-col gap-4 justify-end items-start">
               {navLinks.map((link) => (
                 <li
                   key={link.id}
-                  className={`${
-                    active === link.title ? "text-white" : "text-secondary"
-                  } text-[18px] font-medium cursor-pointer hover:text-white`}
+                  className={`${active === link.title ? "text-white" : "text-secondary"
+                    } text-[18px] font-medium cursor-pointer hover:text-white`}
                   onClick={() => {
                     setActive(link.title);
                     setToggle(!toggle);
